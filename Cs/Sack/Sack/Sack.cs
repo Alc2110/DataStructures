@@ -8,34 +8,24 @@ namespace Sack
 {
     public class Sack
     {
-        private List<object> objects;
+        private readonly IList<object> objects = new List<object>();
+        private readonly Random rand = new Random();
 
-        public Sack()
-        {
-            objects = new List<object>();
-        }
-
-        public void Add<T>(T obj)
+        public void Add(object obj)
         {
             objects.Add(obj);
         }
 
         public object Retrieve()
         {
-            int numberObjects = objects.Count;
-
-            Random rand = new Random();
-            int selectedIndex = rand.Next(0, numberObjects);
+            int selectedIndex = rand.Next(0, objects.Count);
 
             return objects[selectedIndex];
         }
 
         public object Remove()
         {
-            int numberObjects = objects.Count;
-
-            Random rand = new Random();
-            int selectedIndex = rand.Next(0, numberObjects);
+            int selectedIndex = rand.Next(0, objects.Count);
 
             object selectedObject = objects[selectedIndex];
             objects.RemoveAt(selectedIndex);
