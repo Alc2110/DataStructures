@@ -14,7 +14,7 @@ namespace Sack
             testSack.Add(3);
             testSack.Add("hello");
             testSack.Add(false);
-            var test = testSack.Retrieve();
+            var test = testSack.Retrieve(false);
             Console.WriteLine(test);
 
             Console.ReadKey();
