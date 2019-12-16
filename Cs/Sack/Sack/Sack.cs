@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ namespace Sack
 {
     public class Sack
     {
-        private readonly IList<object> objects = new List<object>();
+        private readonly List<object> objects = new List<object>();
         private readonly Random rand = new Random();
 
         public void Add(object obj)
@@ -16,24 +16,21 @@ namespace Sack
             objects.Add(obj);
         }
 
-        public object Retrieve()
-        {
-            int selectedIndex = rand.Next(0, objects.Count);
-
-            return objects[selectedIndex];
-        }
-
-        public object Remove()
+        public object Retrieve(bool remove)
         {
             int selectedIndex = rand.Next(0, objects.Count);
 
             object selectedObject = objects[selectedIndex];
-            objects.RemoveAt(selectedIndex);
+            
+            if (remove)
+            {
+                objects.RemoveAt(selectedIndex);
+            }
 
             return selectedObject;
         }
-
-        public void Empty()
+        
+        public void Clear()
         {
             objects.Clear();
         }
