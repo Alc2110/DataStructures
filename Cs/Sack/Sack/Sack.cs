@@ -34,5 +34,17 @@ namespace Sack
         {
             objects.Clear();
         }
+
+        public List<object> Empty()
+        {
+            List<object> returnList = new List<object>();
+            foreach (var obj in objects)
+            {
+                returnList.Add(obj);
+            }
+            Clear();
+
+            return returnList;
+        }
     }
 }
