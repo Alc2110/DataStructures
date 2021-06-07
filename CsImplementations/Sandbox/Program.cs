@@ -10,10 +10,14 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-            ArrayStack<int> arrayStack = new ArrayStack<int>(3);
-            arrayStack.Push(2);
-            arrayStack.Push(3);
-            arrayStack.Push(1);
+            LinkedListStack<int> stack = new LinkedListStack<int>();
+            stack.Push(2);
+            stack.Push(3);
+            stack.Push(1);
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
+            Console.WriteLine(stack.Pop());
 
             Console.ReadKey();
         }

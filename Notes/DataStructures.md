@@ -212,7 +212,7 @@ Class Stack
     Constructor(int size)
         this.maxSize = size
         this.items = new array[size]
-        this.top = 0
+        this.top = 0 // reports number of items pushed so far
     End Constructor
 
     Procedure Push(item)
@@ -239,11 +239,40 @@ End Class
 
 ## Singly-linked list implementation
 ```
+Class Stack
+    Node head
+    int numItems
 
+    Class Node
+        Item
+        Next
+    End Class
+
+    Procedure Push(item)
+        Node oldHead = this.head
+        this.head = new Node()
+        this.head.Next = oldHead
+        numItems++
+    End Procedure
+
+    Function Pop
+        If (Head is null)
+            Item = this.Head.Item
+            this.Head = this.Head.Next
+            this.numItems--
+
+            return Item
+        Else
+            return null
+        End If
+    End Function
+End Class
 ```
 
 ## Applications/use cases
 - required for depth-first search
+- backtracking
+- expression evaluation and syntax parsing
 
 # Queue
 TODO 
