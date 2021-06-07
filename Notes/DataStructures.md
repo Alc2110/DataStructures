@@ -9,8 +9,8 @@ Data stored in nodes, where each element has a reference to the next. This allow
 Example:
 ![Singly linked list](img/singly_linked_list.PNG)
 
-### Common operations
-### Traversal
+### Common operations/algorithms
+#### Traversal
 ```
 currNode = LinkedList.Head
 While (currNode not null)
@@ -34,7 +34,7 @@ Procedure Append(T item)
     End If
 End Procedure
 ```
-### Inserting at beginning of the list
+#### Inserting a node at beginning of the list
 ```
 Procedure InsertBeginning(T item)
     Create a new Node
@@ -43,7 +43,7 @@ Procedure InsertBeginning(T item)
     NewNode.Next = LinkedList.Head
 End Procedure
 ```
-### Inserting a node at the proper position
+#### Inserting a node at the proper position
 ```
 Procedure Insert(T item)
     Create a new Node
@@ -63,7 +63,7 @@ Procedure Insert(T item)
 End Procedure
 ```
 
-### Removing first node in the list
+#### Removing first node in the list
 ```
 Procedure RemoveFirst
     // remove first node
@@ -76,7 +76,7 @@ Procedure RemoveFirst
 End Procedure
 ```
 
-### Removing last node in the list
+#### Removing last node in the list
 ```
 Procedure RemoveLast
     If (no nodes in LinkedList)
@@ -102,6 +102,83 @@ Time complexity:
 &nbsp;
 
 ## Doubly-linked list
+- Each node contains a *data* field and two references, one for the *previous* node and one for the *next* node.
+- The beginning and ending nodes' references a terminator, or `null`.
+- The double links allow for efficient insertion of nodes before or after a specified node.
+
+Example:
+![Doubly linked list](img/doubly_linked_list.PNG)
+
+## Common operations/algorithms
+#### Traversal
+```
+// forwards traversal
+currNode = LinkedList.Head
+While (currNode is not null)
+    // do something with currNode.Data...
+
+    currNode = currNode.Next
+End While
+
+// backwards traversal
+currNode = LinkedLast.LastNode
+While (currNode is not null)
+    // do something with currNode.Data...
+
+    currNode = currNode.Prev
+End While
+```
+
+#### Node insertion before or after a specific node
+```
+// before a given node
+Procedure InsertBefore(newNode, node)
+    newNode.Next = node
+
+    If (node.Prev is null)
+        newNode.Prev = null
+        LinkedList.FirstNode = newNode
+    Else
+        newNode.Prev = node.Prev
+        node.Prev.Next = newNode
+    End If
+
+    node.Prev = newNode
+End Procedure
+
+// after a given node
+Procedure InsertAfter(newNode, node)
+    newNode.Prev = node
+
+    If (node.Next is null)
+        newNode.Next = null
+        LinkedList.LastNode = newNode
+    Else
+        NewNode.Next = node.Next
+        node.Next.Prev = newNode
+    End If
+
+    node.Next = newNode
+End Procedure
+```
+
+#### Removing a node
+```
+Procedure Remove(node)
+    If (node.Prev is null)
+        LinkedList.FirstNode = node.Next
+    Else
+        node.Prev.Next = node.Next
+    End If
+
+    If (node.Next is null)
+        LinkedList.LastNode = node.Prev
+    Else
+        node.Next.Prev = node.Prev
+    End If
+End Procedure
+```
+
 Time complexity:
 |         |Average |Worst Case|
 |---------|--------|----------|
@@ -117,7 +194,7 @@ TODO
 # Queue
 TODO 
 
-# Deck
+# Deque
 TODO
 
 # Bag
