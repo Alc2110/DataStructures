@@ -15,6 +15,16 @@ namespace DataStructures
         private readonly Random _rand = new Random();
 
         /// <summary>
+        /// Constructor. Adds items.
+        /// </summary>
+        /// <param name="items"></param>
+        public Sack(IEnumerable<object> items)
+        {
+            foreach (var obj in items)
+                Add(obj);
+        }
+
+        /// <summary>
         /// Add a new item to the sack.
         /// </summary>
         /// <param name="obj"></param>
