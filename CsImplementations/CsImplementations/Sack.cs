@@ -7,7 +7,7 @@ namespace DataStructures
     /// <summary>
     /// The idea of this data structure is to hold any number objects of any type. Objects can be retrieved, or removed permanently, at random. Also, it can be cleared (or emptied).
     /// Not very useful in the real-world, but a good exercise in creating and implementing a data structure.
-    /// Using object instead of Generics adss casting operations in the background, which is slower and creates the chance of casting exceptions, but the idea is to store many objects of different tyupes.
+    /// Using object instead of Generics adss casting operations in the background, which is slower and creates the chance of casting exceptions, but the idea is to store many objects of different types.
     /// </summary>
     public class Sack
     {
