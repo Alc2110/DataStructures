@@ -7,11 +7,12 @@ namespace DataStructures
     /// <summary>
     /// The idea of this data structure is to hold any number objects of any type. Objects can be retrieved, or removed permanently, at random. Also, it can be cleared (or emptied).
     /// Not very useful in the real-world, but a good exercise in creating and implementing a data structure.
+    /// Using object instead of Generics adss casting operations in the background, which is slower and creates the chance of casting exceptions, but the idea is to store many objects of different tyupes.
     /// </summary>
     public class Sack
     {
-        private readonly List<object> objects = new List<object>();
-        private readonly Random rand = new Random();
+        private readonly IList<object> _objects = new List<object>();
+        private readonly Random _rand = new Random();
 
         /// <summary>
         /// Add a new item to the sack.
@@ -19,26 +20,40 @@ namespace DataStructures
         /// <param name="obj"></param>
         public void Add(object obj)
         {
-            objects.Add(obj);
+            this._objects.Add(obj);
         }
 
         /// <summary>
-        /// Retrieve an item from the sack, optionally removing it from the sack.
+        /// Retrieves a random item from the sack, without removing it. Effectively simulates putting the item back in the sack once we're done looking at it.
         /// </summary>
-        /// <param name="remove"></param>
         /// <returns></returns>
-        public object Retrieve(bool remove)
+        public object Retrieve()
         {
-            int selectedIndex = rand.Next(0, objects.Count);
-
-            object selectedObject = objects[selectedIndex];
-
-            if (remove)
-            {
-                objects.RemoveAt(selectedIndex);
-            }
+            object selectedObject = this._objects[GetRandomIndex()];
 
             return selectedObject;
+        }
+
+        /// <summary>
+        /// Removes a random item from the sack.
+        /// </summary>
+        /// <returns></returns>
+        public object Remove()
+        {
+            int selectedIndex = GetRandomIndex();
+
+            object selectedObject = this._objects[selectedIndex];
+            this._objects.RemoveAt(selectedIndex);
+
+            return selectedObject;
+        }
+
+        private int GetRandomIndex()
+        {
+            int numberOfObjects = this._objects.Count;
+            int selectedIndex = this._rand.Next(0, numberOfObjects);
+
+            return selectedIndex;
         }
 
         /// <summary>
@@ -46,7 +61,7 @@ namespace DataStructures
         /// </summary>
         public void Clear()
         {
-            objects.Clear();
+            this._objects.Clear();
         }
 
         /// <summary>
@@ -56,7 +71,7 @@ namespace DataStructures
         public List<object> Empty()
         {
             List<object> returnList = new List<object>();
-            foreach (var obj in objects)
+            foreach (var obj in this._objects)
             {
                 returnList.Add(obj);
             }
