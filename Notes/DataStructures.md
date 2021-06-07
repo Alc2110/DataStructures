@@ -189,7 +189,61 @@ Time complexity:
 &nbsp;
 
 # Stack
-TODO 
+A **stack** is an ADT that mimics a stack of plates, where removal is only possible from the top. It supports two main operations:
+- push - adds an element to the top of the stack
+- pop - removes the most recently added element yet to be removed
+
+This behaviour is known as LIFO (Last-in, first-out).
+
+Additional operation:
+- peek - retrieves the item at the top, without removing it from the stack. Can be achieved via a pop followed by a push operation to return the item to the stack.
+
+If the stack is empty, a stack underflow will occur upon execution of peek or pop.
+
+A stack can be implemented using either an array or linked list.
+
+## Array implementation
+```
+Class Stack
+    int maxSize
+    int top
+    array items
+
+    Constructor(int size)
+        this.maxSize = size
+        this.items = new array[size]
+        this.top = 0
+    End Constructor
+
+    Procedure Push(item)
+        If (this.top == this.maxSize)
+            report overflow error
+        Else
+            this.items[this.top] = item
+            this.top = this.top + 1
+        End If
+    End Procedure
+
+    Function Pop()
+        If (this.Top = 0)
+            report underflow error
+        Else
+            this.Top = this.Top - 1
+            item = this.items[this.top]
+
+            return item
+        End If
+    End Function
+End Class
+```
+
+## Singly-linked list implementation
+```
+
+```
+
+## Applications/use cases
+- required for depth-first search
 
 # Queue
 TODO 
