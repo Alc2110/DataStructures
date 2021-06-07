@@ -244,8 +244,8 @@ Class Stack
     int numItems
 
     Class Node
-        Item
-        Next
+        T Item
+        Node Next
     End Class
 
     Procedure Push(item)
@@ -275,7 +275,72 @@ End Class
 - expression evaluation and syntax parsing
 
 # Queue
-TODO 
+A **queue** is a collection of items maintained in a sequence, where items can be added at one end and removed at the other. It supports two main operations:
+- enqueue - adding an element to the rear of the queue
+- dequeue - removing an element from the front of the queue
+Other operations:
+- peek
+
+This behaviour is known as FIFO (First-in, first-out).
+
+![Queue](img/queue.PNG)
+
+## Singly-linked list implementation
+```
+Class Queue
+    Node first // least recently added node
+    Node last // most recently added node
+    int n // number of items on the queue
+
+    Class Node
+        T Item
+        Node Next
+    End Class
+
+    Procedure Enqueue(item)
+        // add item to the end of the linked list
+
+        Node oldLast = last
+        last = new Node()
+        last.Item = item
+        last.Next = null
+        
+        If (this.IsEmpty)
+            first = last
+        Else
+            oldLast.Next = last
+        End If
+
+        n++
+    End Procedure
+
+    Function Dequeue()
+        // remove item from the beginning of the linked list
+
+        Item item = first.Item
+        first = first.Next
+        n--
+
+        If (this.IsEmpty)
+            last = null
+        End If
+
+        return Item
+    End Function
+End Class
+```
+
+## Applications/use cases
+- breadth-first search
+- other scenarios where objects must wait to be processed
+
+Time complexity:
+|         |Average |Worst Case|
+|---------|--------|----------|
+|Search   |O(n)    |O(n)      |
+|Insertion|O(1)    |O(1)      |
+|Deletion |O(1)    |O(1)      |
+&nbsp;
 
 # Deque
 TODO
