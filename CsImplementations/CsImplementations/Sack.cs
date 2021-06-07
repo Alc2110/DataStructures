@@ -39,6 +39,7 @@ namespace DataStructures
         /// <returns></returns>
         public object Retrieve()
         {
+            // TODO: make this faster
             object selectedObject = this._objects[GetRandomIndex()];
 
             return selectedObject;
@@ -51,7 +52,8 @@ namespace DataStructures
         public object Remove()
         {
             int selectedIndex = GetRandomIndex();
-
+            
+            // TODO: make this faster
             object selectedObject = this._objects[selectedIndex];
             this._objects.RemoveAt(selectedIndex);
 
