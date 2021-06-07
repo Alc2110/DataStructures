@@ -68,16 +68,14 @@ namespace DataStructures
         /// Clear the items in the sack, returning them as a list.
         /// </summary>
         /// <returns></returns>
-        public List<object> Empty()
+        public IEnumerable<object> Empty()
         {
             List<object> returnList = new List<object>();
             foreach (var obj in this._objects)
             {
-                returnList.Add(obj);
+                yield return obj;
             }
             Clear();
-
-            return returnList;
         }//Empty
     }//class
 }
