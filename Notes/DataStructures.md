@@ -357,4 +357,4 @@ A **steque** (stack-ended queue) is an ADT that supports `push`, `pop` and `enqu
 ![Steque](img/steque.PNG)
 
 # Bag
-TODO
+A **bag** is a simple data structure that only supports adding items. Removing items is not allowed. The only other operation that can be done is iteration over all the items.
