@@ -187,7 +187,7 @@ Function BinarySearch(list, value)
     high = list.Count-1
     found = false
 
-    While (low <= high>)
+    While (low <= high)
         middle = floor((low+high)/2)
 
         If (list[middle] < value)
