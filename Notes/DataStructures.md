@@ -358,3 +358,37 @@ A **steque** (stack-ended queue) is an ADT that supports `push`, `pop` and `enqu
 
 # Bag
 A **bag** is a simple data structure that only supports adding items. Removing items is not allowed. The only other operation that can be done is iteration over all the items.
+
+# Associative array
+An **associative array** is an ADT that is composed of a collection of (key,value) pairs. Keys cannot have duplicates, while values can have duplicates. The supported operations are:
+- add - add a KV pair
+- remove - remove a KV pair
+- modify - change the key or value of a KV pair
+- lookup - retrieve a value associated with a particular key
+
+The two common ways of implementing this data structure are using hash tables and search trees.
+
+## Hash table implementations
+- A hash table uses a **hash function** to calculate an **index (hash code)** for a given value. The value will be found in an array of **buckets (slots)**.
+- Ideally, each key will be assigned to a unique bucket. However, most hash functions are imperfect, and will cause **collisions** (where multiple keys are mapped to the same index). There are mechanisms for dealing with such cases in most implementations.
+- Usually, the hashing makes for very fast operations. However, if multiple hashing collisions start occurring, it can slow down.
+
+The hashing operation is often carried out as follows:
+```
+hash = hash_function(key)
+index = hash % array_size
+```
+The problem to solve is choosing the right hash function.
+
+Example:
+![hashing](img/hashing.PNG)
+
+Time complexity:
+|         |Average |Worst Case|
+|---------|--------|----------|
+|Search   |O(1)    |O(n)      |
+|Insertion|O(1)    |O(n)      |
+|Deletion |O(1)    |O(n)      |
+
+## Search tree implementations
+TODO
