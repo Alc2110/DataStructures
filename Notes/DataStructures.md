@@ -343,7 +343,14 @@ Time complexity:
 &nbsp;
 
 # Deque
-TODO
+A **deque** is a double-ended queue. It supports adding and removing items at both ends.
+
+![Deqeue](img/dequeue.PNG)
+
+It may be implemented using a doubly-linked list.
+
+# Steque
+A **steque** (stack-ended queue) is an ADT that supports `push`, `pop` and `enqueue`. It can be implemented using a linked list.
 
 # Bag
 TODO

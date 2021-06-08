@@ -306,7 +306,7 @@ namespace DataStructures.LinkedLists
             }
             else
             {
-                // list is not empty, traverse it to the end and count
+                // list is not empty, traverse it to the end
                 Node currNode = this._head;
                 while (currNode.Next != null)
                 {
