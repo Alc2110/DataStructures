@@ -11,26 +11,31 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-            LinkedListQueue<int> queue = new LinkedListQueue<int>();
-            queue.Enqueue(3);
-            queue.Enqueue(2);
-            queue.Enqueue(1);
-            //queue.Clear();
-            queue.Enqueue(53);
+            LinkedListSteque<int> steque = new LinkedListSteque<int>();
+            steque.Enqueue(1);
+            steque.Enqueue(2);
+            steque.Enqueue(3);
+            steque.Push(4);
+            //steque.Pop();
+            steque.Clear();
+            steque.Enqueue(1);
+            steque.Push(1);
+            Console.WriteLine("Peeking queue: " + steque.Peek());
+            
+            Console.WriteLine("\r\nPrinting steque...");
+            foreach (var i in steque.ToList())
+                Console.WriteLine(i);
+            
+            Console.WriteLine("\r\nNumber of items in steque: " + steque.Count);
 
-            /*
-            Console.WriteLine(queue.Dequeue());
-            Console.WriteLine(queue.Dequeue());
-            Console.WriteLine(queue.Dequeue());
-            Console.WriteLine(queue.Dequeue());
-            */
-            //Console.WriteLine("Number of items in queue: " + queue.Count);
+            Console.WriteLine();
 
-            Console.WriteLine("Contains 3: " + queue.Contains(3));
-            Console.WriteLine("Contains 2: " + queue.Contains(2));
-            Console.WriteLine("Contains 1: " + queue.Contains(1));
-            Console.WriteLine("Contains 53: " + queue.Contains(53));
-            Console.WriteLine("Contains 300: " + queue.Contains(300));
+            Console.WriteLine(steque.Contains(1));
+            Console.WriteLine(steque.Contains(2));
+            Console.WriteLine(steque.Contains(3));
+            Console.WriteLine(steque.Contains(4));
+            Console.WriteLine(steque.Contains(5));
+            
 
             Console.ReadKey();
         }

@@ -202,6 +202,8 @@ If the stack is empty, a stack underflow will occur upon execution of peek or po
 
 A stack can be implemented using either an array or linked list.
 
+![Stack](img/stack.PNG)
+
 ## Array implementation
 ```
 Class Stack
@@ -351,6 +353,8 @@ It may be implemented using a doubly-linked list.
 
 # Steque
 A **steque** (stack-ended queue) is an ADT that supports `push`, `pop` and `enqueue`. It can be implemented using a linked list.
+
+![Steque](img/steque.PNG)
 
 # Bag
 TODO
