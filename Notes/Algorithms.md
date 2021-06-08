@@ -32,10 +32,118 @@ Time complexity:
 TODO
 
 ## Selection sort
-TODO
+- A simple algorithm that creates the sorted array one item at a time. It is efficient for small data sets, but quickly becomes inefficient as the number of items increases.
+- A sorted "sublist" is gradually built from beginning to end. The smallest (or largest) element in the remaining unsorted portion is found, and is swapped with the leftmost unsorted element, and the sorted portion is then advanced by one element.
+
+- The first step is to find the smallest element in the list, which is then placed at the beginning of the list. The element originally at the beginning of the list is simply moved to where the smallest element initially was (i.e. it is swapped with that element), since we don't yet know where it should be placed. The first element is now part of the sorted sublist.
+- Next, we take the minimum of the remaining elements, and perform the swap, and continue the process.
+![Selection sort](img/selection_sort.PNG)
+
+```
+Procedure SelectionSort(list)
+    For (int next = 0; next < list.Size-1; next++)
+        // find the position of the minimum
+        int minPos = GetMinPos(list, next, list.Size-1)
+
+        If (minPos != next)
+            Swap(list[minPos], list[next])
+        End If
+    End For
+End Procedure
+
+Procedure Swap(x, y)
+    temp = x
+    x = y
+    y = temp
+End Procedure
+
+Function GetMinPos(list, from, to)
+    minPos = from
+    For (int i = from+1, i <= to; i++)
+        If (list[i] < list[minPos])
+            minPos = i
+        End If
+    End For
+
+    return minPos
+End Function
+```
+
+Time complexity:
+|Best     |Average |Worst Case|
+|---------|--------|----------|
+|O(n)     |O(n^2)  |O(n^2)    |
+&nbsp;
 
 ## Merge sort
-TODO
+- A comparison-based, divide-and-conquer algorithm. It is efficient and fit for general purpose. It was invented by John von Neumann in 1945.
+
+- Suppose we have a list of items. First, we naively assume that the first half is already perfectly sorted, and so is the second half.
+- Now, we merge the two presumably sorted lists into one. This is done by adding an element to the resulting list from either the first or second sublist, whichever is smaller.
+![Merge sort](img/merge_sort.PNG)
+- The first and second halves of the list must still be sorted. The algorithm actually keeps dividing each half into smaller and smaller sublists, sorting each and merging them back together.
+```
+Procedure MergeSort(list, from, to)
+    If (from == to)
+        return
+    End If
+
+    int mid = (from + to) / 2
+
+    // sort the first and second halves
+    MergeSort(list, from, mid)
+    MergeSort(list, mid+1, to)
+    Merge(list, from, mid, to)
+End Procedure
+
+Procedure Merge(list, from, mid, to)
+    // size of the range to be merged
+    int n = to - from + 1
+
+    list b // temp vector
+
+    int i1 = from
+    int i2 = mid + 1
+    int j = 0
+
+    While (i1 <= mid && i2 <= to)
+        If (list[i1] < list[i2]>)
+            b[j] = list[i1]
+            i1++
+        Else
+            b[j] = list[i2]
+            i2++
+        End If
+
+        j++
+    End While
+
+    // copy remaining entries from the first half
+    While (i1 <= mid>)
+        b[j] = list[i1]
+        i1++
+        j++
+    End While
+
+    // copy remaining entries from the second half
+    While (i2 <= to)
+        b[j] = list[i2]
+        i2++
+        j++
+    End While
+
+    // copy back from the temporary vector
+    For (j = 0; j < n; j++)
+        list[from+j] = b[j]
+    End For
+End Procedure
+```
+
+Time complexity:
+|Best     |Average |Worst Case|
+|---------|--------|----------|
+|O(n*log(n))|O(n*log(n))|O(n*log(n))|
+&nbsp;
 
 ## Comparison sort
 TODO
