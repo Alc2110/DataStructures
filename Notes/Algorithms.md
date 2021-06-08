@@ -155,4 +155,56 @@ TODO
 TOPO
 
 # Searching algorithms
-TODO
+## Linear search
+- Simple algorithm which performs a sequential check of each element in the list, until the match has been found, or no match has been found after the whole list has been covered.
+- Whilst performance of this algorithm is not especially bad, there exist others, such as binary search, which offer better performance. Thus, it is not as practical to use.
+
+```
+Function LinearSearch(list, value)
+    For (int i = 0; i < list.Length; i++)
+        If (list[i] == value)
+            return true
+        End If
+    End For
+
+    return false
+End Function
+```
+
+Time complexity:
+|Best     |Average |Worst Case|
+|---------|--------|----------|
+|O(1)     |O(n/2)  |O(n)      |
+&nbsp;
+
+## Binary search
+- Finds an item in a *sorted* list by repeatedly chopping the list in two. Compares target value to that of the item in the middle of the list, and the half which cannot contain the value is eliminated, and the process is repeated. If the search ends with the remaining sublist being empty, the target item does not exist in the list.
+- Faster than linear search, except for very small lists.
+
+```
+Function BinarySearch(list, value)
+    low = 1
+    high = list.Count-1
+    found = false
+
+    While (low <= high>)
+        middle = floor((low+high)/2)
+
+        If (list[middle] < value)
+            low = middle+1
+        Else If (list[middle] > value)
+            high = middle-1
+        Else
+            return middle
+        End If
+    End While
+
+    return null or default value
+End Function
+```
+
+Time complexity:
+|Best     |Average |Worst Case|
+|---------|--------|----------|
+|O(1)     |O(log(n))  |O(log(n))      |
+&nbsp;
