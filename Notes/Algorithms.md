@@ -29,7 +29,40 @@ Time complexity:
 &nbsp;
 
 ## Insertion sort
-TODO
+- A simple sorting algorithm that builds the resulting sorted list one element at a time. It is similar to manual sorting of cards in a bridge hand.
+- It is not very efficient, but is simple and **stable**. Stability refers to the fact that the relative order of elements with equal keys does not change.
+
+Example:
+![Insertion sort](img/insertion_sort.PNG)
+
+```
+Procedure InsertionSort(list)
+// for zero-based arrays
+    i = 1
+    While (i < list.Length)
+
+        j = i
+        While ((j > 0) && (list[j-1] > list[j]))
+            Swap(list[j], list[j-1])
+            j = j-1
+        End While
+
+        i++
+    End While
+End Procedure
+
+Procedure Swap(x, y)
+    temp = x
+    x = y
+    y = temp
+End Procedure
+```
+
+Time complexity:
+|Best     |Average |Worst Case|
+|---------|--------|----------|
+|O(n)     |O(n^2)  |O(n^2)    |
+&nbsp;
 
 ## Selection sort
 - A simple algorithm that creates the sorted array one item at a time. It is efficient for small data sets, but quickly becomes inefficient as the number of items increases.
@@ -144,9 +177,6 @@ Time complexity:
 |---------|--------|----------|
 |O(n*log(n))|O(n*log(n))|O(n*log(n))|
 &nbsp;
-
-## Comparison sort
-TODO
 
 ## QuickSort
 TODO
