@@ -25,6 +25,7 @@ namespace DataStructures.Stacks
             this._head = new Node();
             this._head.Item = item;
             this._head.Next = oldHead;
+
             _numItems++;
         }
 

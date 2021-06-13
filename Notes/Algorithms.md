@@ -178,11 +178,53 @@ Time complexity:
 |O(n*log(n))|O(n*log(n))|O(n*log(n))|
 &nbsp;
 
-## QuickSort
-TODO
+## Quicksort
+- A divide-and-conquer algorithm. Invented by Tony Hoare 1959-1961. 
+- It is slightly faster than MergeSort, and 2-3 times faster than Heapsort. In the worst case, typically when the list is already sorted, its performance is rather slow.
+- It is implemented by selecting a **pivot** element from the list, and partitioning the remaining elements into sub-lists.
+
+### More detail on implementation
+- If the list has zero or one element, return.
+- Set the pivot to the last element in the list.
+
+```
+// this procedure would be called like so: quicksort(list, 0, list.Length-1)
+Procedure Quicksort(list, low, high)
+    If (low < high>)
+    End If
+End Procedure
+```
+
+Time complexity:
+|Best     |Average |Worst Case|
+|---------|--------|----------|
+|O(n*log(n))|O(n*log(n))|O(n^2)|
+&nbsp;
 
 ## Shellsort
-TOPO
+- A comparison sorting algorithm. Invented by Donald Shell in 1959.
+- Essentially, it is similar to the insertion sort or bubble sort, but allowing swapping of elements far apart. The elements are sorted such that, every hth element from any starting point produces a "h-sorted" list. So, the result is h interleaved sorted lists.
+- Performance depends heavily on these gaps, and is an active area of research. It is not stable (relative order of equal elements may change). It is adaptive (executes faster with partially-sorted inputs).
+
+```
+Procedure Shellsort(list)
+    int n = list.Length
+
+    // produce a descending gap sequence
+    gaps = [...]
+
+    Foreach (gap in gaps)
+
+    End Foreach
+
+End Procedure
+```
+
+Time complexity:
+|Best     |Average |Worst Case|
+|---------|--------|----------|
+|O(n*log(n))|O(n*log(n))|O(n*log(n))|
+&nbsp;
 
 # Searching algorithms
 ## Linear search
