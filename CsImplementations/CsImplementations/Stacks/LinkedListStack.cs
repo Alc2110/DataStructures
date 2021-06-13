@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace DataStructures.Stacks
     /// Stack implemented with singly-linked list.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class LinkedListStack<T>
+    public class LinkedListStack<T> : IEnumerable<T>
     {
         private Node _head;
         private int _numItems;
@@ -19,6 +20,38 @@ namespace DataStructures.Stacks
             public Node Next;
         }
 
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public LinkedListStack()
+        {
+
+        }
+
+        /// <summary>
+        /// Copy constructor. Creates a deep copy.
+        /// </summary>
+        /// <param name="stack"></param>
+        public LinkedListStack(LinkedListStack<T> stack)
+        {
+            List<T> items = new List<T>() { };
+
+            foreach (var item in stack)
+            {
+                items.Add(item);
+            }
+            items.Reverse();
+
+            foreach (var item in items)
+            {
+                this.Push(item);
+            }
+        }
+
+        /// <summary>
+        /// Adds an item to the stack.
+        /// </summary>
+        /// <param name="item"></param>
         public void Push(T item)
         {
             Node oldHead = this._head;
@@ -59,6 +92,22 @@ namespace DataStructures.Stacks
             this.Push(item);
 
             return item;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            Node currNode = this._head;
+            while (currNode != null)
+            {
+                yield return currNode.Item;
+
+                currNode = currNode.Next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }

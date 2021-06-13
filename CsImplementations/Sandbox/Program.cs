@@ -11,14 +11,25 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-            RandomBag<int> bag = new RandomBag<int>();
-            bag.Add(1);
-            bag.Add(3);
-            bag.Add(2);
-            bag.Add(4);
+            LinkedListStack<int> stack = new LinkedListStack<int>();
+            stack.Push(1);
+            stack.Push(3);
+            stack.Push(2);
+            stack.Push(4);
 
-            Console.WriteLine("Size: " + bag.GetSize());
-            foreach (var i in bag)
+            LinkedListStack<int> stack2 = new LinkedListStack<int>(stack);
+            stack2.Push(11);
+
+            Console.WriteLine("Stack 1:");
+            foreach (var i in stack)
+            {
+                Console.WriteLine(i);
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine("Stack 2:");
+            foreach (var i in stack2)
             {
                 Console.WriteLine(i);
             }
