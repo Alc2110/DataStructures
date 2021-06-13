@@ -11,27 +11,25 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-            LinkedListStack<int> stack = new LinkedListStack<int>();
-            stack.Push(1);
-            stack.Push(3);
-            stack.Push(2);
-            stack.Push(4);
+            LinkedListDeque<int> deque = new LinkedListDeque<int>();
+            deque.PushLeft(1);
+            deque.PushLeft(2);
+            deque.PushRight(3);
+            deque.PushRight(4);
 
-            LinkedListStack<int> stack2 = new LinkedListStack<int>(stack);
-            stack2.Push(11);
-
-            Console.WriteLine("Stack 1:");
-            foreach (var i in stack)
+            foreach (var item in deque)
             {
-                Console.WriteLine(i);
+                Console.WriteLine(item);
             }
 
             Console.WriteLine();
 
-            Console.WriteLine("Stack 2:");
-            foreach (var i in stack2)
+            Console.WriteLine("Popping Left: " + deque.PopLeft());
+            Console.WriteLine("Popping Right: " + deque.PopRight());
+            Console.WriteLine("Popping Right: " + deque.PopRight());
+            foreach (var item in deque)
             {
-                Console.WriteLine(i);
+                Console.WriteLine(item);
             }
 
             Console.ReadKey();
