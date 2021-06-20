@@ -27,7 +27,7 @@ namespace DataStructures
         }
 
         /// <summary>
-        /// Gets whether the queue is empty.
+        /// Gets whether the steque is empty.
         /// </summary>
         /// <returns></returns>
         public bool IsEmpty() => this._n == 0;

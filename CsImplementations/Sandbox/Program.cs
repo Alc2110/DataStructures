@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DataStructures;
 using DataStructures.LinkedLists;
 using DataStructures.Stacks;
+using DataStructures.Trees;
 
 namespace Sandbox
 {
@@ -11,26 +12,19 @@ namespace Sandbox
     {
         static void Main(string[] args)
         {
-            LinkedListDeque<int> deque = new LinkedListDeque<int>();
-            deque.PushLeft(1);
-            deque.PushLeft(2);
-            deque.PushRight(3);
-            deque.PushRight(4);
+            BinarySearchTree<int> bst = new BinarySearchTree<int>();
+            bst.Insert(1);
+            bst.Insert(6);
+            bst.Insert(4);
+            bst.Insert(5);
+            bst.Delete(4);
+            bst.Delete(3);
 
-            foreach (var item in deque)
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine();
-
-            Console.WriteLine("Popping Left: " + deque.PopLeft());
-            Console.WriteLine("Popping Right: " + deque.PopRight());
-            Console.WriteLine("Popping Right: " + deque.PopRight());
-            foreach (var item in deque)
-            {
-                Console.WriteLine(item);
-            }
+            Console.WriteLine("Contains 1: " + bst.Contains(1));
+            Console.WriteLine("Contains 4: " + bst.Contains(4));
+            Console.WriteLine("Contains 5: " + bst.Contains(5));
+            Console.WriteLine("Contains 6: " + bst.Contains(6));
+            Console.WriteLine("Contains 7: " + bst.Contains(7));
 
             Console.ReadKey();
         }
