@@ -188,6 +188,21 @@ Time complexity:
 |Deletion |O(1)    |O(1)      |
 &nbsp;
 
+# Skip list
+- A **probabilistic** (employing a degree of randomness in its logic) data structure that allows efficient searching and insertion, with an ordered sequence of elements.
+- It combines the best features of sorted arrays (searching) and linked lists (insertion).
+- Invented by William Pugh in 1989
+
+- A skip list is made up of layers of lists. The bottom layer is a linked list.
+
+Time complexity:
+|         |Average |Worst Case|
+|---------|--------|----------|
+|Search   |O(log(n))|O(n)     |
+|Insertion|O(log(n))|O(n)      |
+|Deletion |O(log(n))|O(n)      |
+&nbsp;
+
 # Stack
 A **stack** is an ADT that mimics a stack of plates, where removal is only possible from the top. It supports two main operations:
 - push - adds an element to the top of the stack
@@ -392,3 +407,168 @@ Time complexity:
 
 ## Search tree implementations
 TODO
+
+# Binary search tree
+- A rooted (tree starts at a single root node) binary (each node has two children) tree which satisfies the condition that for each node, nodes in the right subtree are greater than those in the left subtree. 
+- Invented in 1960.
+- The elements stored must be comparable in the language in which it is being implemented.
+
+Example:
+
+![binary search tree](img/binary_search_tree.PNG)
+
+
+Time complexity:
+|         |Average |Worst Case|
+|---------|--------|----------|
+|Search   |O(log(n))|O(n)     |
+|Insertion|O(log(n))|O(n)     |
+|Deletion |O(log(n))|O(n)     |
+
+# Red-black tree
+- A type of binary search tree that is **balanced** (guaranteed height of O(log(n)) for n items). It is **self-balancing** (height automatically kept small in the face of item insertions and deletions).
+- It has the same properties as a binary search tree, with the extra requirement of each node having a "colour", either red or black. The root node and leaves (NIL) are always black.
+- If a node is red, then all its children are black.
+- All paths from a node to its NIL descendants contain the same number of black nodes (not counting the starting node).
+- Each node has its own "black height".
+- Invented by Rudolf Bayer in 1972
+
+Example:
+![red-black tree](img/red_black_tree.PNG)
+
+## Operations
+### Searching
+
+### Rotation
+- Involves rearranging subtrees, with the goal to decrease the tree's height (maximum height of O(log(n))). To accomplish this, larger subtrees are moved up the tree, and smaller subtrees down the tree.
+- does not affect order of elements (smaller elements to the left, larger elements to the right)
+- To understand the mechanism of rotation, note that the order of leaves, and the property that a left child must be less than a right child, cannot change.
+- there are two types of rotation: left and right.
+- Time complexity: O(1)
+![rbt rotation](img/rbt_rotation.PNG)
+```
+pivot = root.opposite_side
+root.opposite_side = pivot.rotation_side
+pivot.rotation_side = root
+root = pivot
+```
+#### Left rotation
+```
+Private Procedure RotateLeft(T, Node x)
+    // create a node y from x's RH child
+    // turn y's LH subtree into x's RH subtree
+    y = x.Right
+    x.Right = y.Left
+    y.Left.Parent = x
+    y.Parent = x.Parent
+
+    If (x.Parent is null)
+        T.root = y
+    Else If (x == x.Parent.Left)
+        x.Parent.Left = y
+    Else
+        x.Parent.Right =y
+    End If
+
+    y.Left = x
+    x.Parent = y
+End Procedure
+```
+#### Right rotation
+```
+Private Procedure RotateRight(T, Node x)
+    // create a node y from x's LH child
+    // turn y's RH subtree into x's LH subtree
+    // RH subtree of y gets a new parent
+    // y's parent is now x's parent
+    y = x.Left
+    x.Left = y.Right
+    y.Right.Parent = x
+
+    If (x.Parent is null)
+        T.root = y
+    Else If (x == x.Parent.Left)
+        x.Parent.Left = y
+    Else
+        x.Parent.Right = y
+    End If
+
+    y.Right = x
+    x.Parent = y
+End Procedure
+```
+### Insertion
+- requires **Rotation**
+- insert new node, and colour it RED
+- recolour and rotate nodes to fix RBT violation:
+1. if new node is Root -> colour it BLACK
+2. if new node's uncle is RED -> RECOLOUR its parent, grandparent and uncle
+3. if new node's uncle is BLACK (Triangle) -> ROTATE new node's parent
+4. if new node's uncles is BLACK (line) -> ROATE new node's grandparent and RECOLOUR
+```
+Procedure Insert(T value, Node z)
+    y = null
+    x = T.root
+
+    While (x != null)
+        y = x
+
+        If (z.Value < x.Value)
+            x = x.Left
+        Else
+            x = x.Right
+        End If
+    End While
+
+    z.Parent = y
+    
+    If (y = null)
+        T.root = z
+    Else If (z.Value < y.Value)
+        y.Left = z
+    Else
+        y.Right = z
+    End If
+
+    z.Left = null
+    z.Right = null   
+    z.Color = RED
+
+    InsertFixup(T,z)
+
+End Procedure
+
+// High-level description
+Procedure InsertFixup(T, Node z)
+    While (z.Parent is RED)
+        y = z's uncle
+        If (y is RED)
+            Colour parent and uncle BLACK
+            Colour grandparent RED
+            z = z.grandparent
+        Else
+            If (zig-zag)
+                parent = z
+                rotate to zig zag
+            End If
+        End If
+    End While
+End Procedure
+```
+### Removal
+- requires **Rotation**
+
+## Applications/use cases
+- since they offer worst-case performance guarantees for insertion, deletion, and searching, they are valuable in time-sensitive applications
+- computational geometry
+- functional programming
+- associative arrays
+- the C++ STL set, multiset, map and multimap implementations
+- the Java TreeMap implementation of NavigableMap
+
+Time complexity:
+|         |Average |Worst Case|
+|---------|--------|----------|
+|Search   |O(log(n))|O(log(n))     |
+|Insertion|O(log(n))|O(log(n))     |
+|Deletion |O(log(n))|O(log(n))     |
