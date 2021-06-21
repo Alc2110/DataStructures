@@ -572,3 +572,25 @@ Time complexity:
 |Search   |O(log(n))|O(log(n))     |
 |Insertion|O(log(n))|O(log(n))     |
 |Deletion |O(log(n))|O(log(n))     |
+
+# Graph
+- A graph is an ADT consisting of a set of *vertices (nodes or points)*, and a set of *edges* connecting them.
+- normally, we number the vertices 0 to V-1 in a graph with V vertices, to make it easier to write code using arrays.
+
+## Definitions
+- **self-loop** - an edge that connects a vertex to itself
+- **parallel** - two edges that connect the same pair of vertices
+- **anomaly** - any self-loop or parallel loops
+![anomalies](img/graph_anomalies.PNG)
+
+- **path** a sequence of vertices connected by edges, with no repeated edges
+- **simple path** - path with no repeated vertices
+- **cycle** - path with at least one edge whose first and last vertices are the same
+- **simple cycle** - cycle with no repeated vertices (except the first and last vertices)
+- **length** - number of edges in a path or cycle
+
+- **connected graph** - has a path from every vertex to every other vertex
+- **acyclic graph** - has no cycles
+- **tree** - an acyclic connected graph
+- **forest** - a disjoint set of trees
+- **bipartite graph** - a graph whose vertices can be divided into two sets, so that all edges connect a vertex in one set with a vertex in the other set
