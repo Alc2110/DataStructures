@@ -682,3 +682,9 @@ Procedure BFS(G, root)
     End While
 End Procedure
 ```
+## Directed graph (digraph)
+Each edge has a specified direction. Applications include:
+- food web (who is the predator and who is the prey?)
+- web (machine connections)
+- scheduling constraints
+- finance - transactions

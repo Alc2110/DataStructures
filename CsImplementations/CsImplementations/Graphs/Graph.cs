@@ -10,13 +10,13 @@ namespace DataStructures.Graphs
     public class Graph
     {
         // number of vertices
-        private int _V;
+        protected int _V;
 
         // number of edges
-        private int _E = 0;
+        protected int _E = 0;
 
         // array of adjacency lists
-        private List<int>[] _adj;
+        protected List<int>[] _adj;
 
         /// <summary>
         /// Constructor to create a graph.
@@ -50,7 +50,7 @@ namespace DataStructures.Graphs
         /// </summary>
         /// <param name="v">One vertex of the new edge.</param>
         /// <param name="w">The other vertex of the new edge.</param>
-        public void AddEdge(int v, int w)
+        public virtual void AddEdge(int v, int w)
         {
             // validate given node numbers
             if (v < 0 || v > this._adj.Length)
