@@ -583,6 +583,8 @@ Time complexity:
 - **anomaly** - any self-loop or parallel loops
 ![anomalies](img/graph_anomalies.PNG)
 
+- **degree** - the number of edges connected to a vertex
+
 - **path** a sequence of vertices connected by edges, with no repeated edges
 - **simple path** - path with no repeated vertices
 - **cycle** - path with at least one edge whose first and last vertices are the same
@@ -594,3 +596,89 @@ Time complexity:
 - **tree** - an acyclic connected graph
 - **forest** - a disjoint set of trees
 - **bipartite graph** - a graph whose vertices can be divided into two sets, so that all edges connect a vertex in one set with a vertex in the other set
+![anatomy of a graph](img/graph_anatomy.PNG)
+
+## Trees
+Trees have the following mathematical properties, in addition to the definition provided above, where G is a graph with V vertices. G is a tree if:
+- G has V-1 edges and no cycles
+- G has V-1 edges and is connected
+- G is connected, but removing any edge disconnects it
+- G is acyclic, but adding any edge disconnects it
+- exactly one simple path connects each pair of vertices in G
+
+## Searching
+There are two main mechanisms for searching graphs: **breadth-first** and **depth-first**. Most simple and efficient graph algorithms are derived from these.
+
+### Depth-First-Search (DFS)
+The following are the principles behind DFS:
+- invoke a recursive method that visits vertices.
+- for each vertex, mark it as having been **visited**.
+- recursively visit all the vertices that are adjacent to it and that have not yet been marked.
+```
+// whether DFS has been called for a particular vertex
+Private boolean[] marked
+
+Procedure DFS(G, T v)
+   // mark v as discovered
+   marked[v] = True
+
+   // recursively call DFS for all unmarked adjacent vertices
+   For (T w in G.Adjacent(v))
+        If (!marked[w])
+            DFS(G,w)
+        End If
+   End For
+End Procedure
+```
+DFS is similar to **Tremaux exploration** of a maze. This involves the following steps:
+- Take any unmarked passage in the maze. Unrol a string behind you as you proceed.
+- Mark all intersections and passages as they are discovered.
+- When you encounter a marked intersection, retrace your steps.
+- Retrace steps when no unmarked options remain at an intersection encountered while retracing steps.
+
+We can also have an *iterative* implementation, using a stack:
+```
+Private boolean[] marked
+
+Procedure DFS_Iterative(G, T v)
+    s = new Stack()
+    s.Push(v)
+
+    While (s is not empty)
+        v = s.Pop()
+        If (!marked[v])
+            marked[v] = True
+
+            For (T w in G.Adjacent(v))
+                s.Push(w)
+            End For
+        End If
+    End While
+End Procedure
+```
+### Breadth-First-Search (BFS)
+BFS involves exploring all vertices at the present depth before moving on to the vertices at the next level. To keep track of this, a queue is used to store child vertices that have been encountered but not yet explored.
+```
+Private boolean[] explored
+
+Procedure BFS(G, root)
+    q = new Queue()
+
+    // label root as explored
+    explored[root] = True
+
+    q.Enqueue(root)
+    While (q is not empty)
+        v = q.Dequeue()
+
+        // if v is the goal, can return v
+
+        For (T w in G.Adjacent(v))
+            If (!explored[v])
+                explored[v] = True
+                q.Enqueue(w)
+            End If
+        End For
+    End While
+End Procedure
+```
