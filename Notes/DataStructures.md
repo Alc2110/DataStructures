@@ -598,6 +598,9 @@ Time complexity:
 - **bipartite graph** - a graph whose vertices can be divided into two sets, so that all edges connect a vertex in one set with a vertex in the other set
 ![anatomy of a graph](img/graph_anatomy.PNG)
 
+- **complete graph** - a graph that contains exactly one edge between each pair of distinct vertices. A complete graph on n vertices is denoted by K_n.
+![complete graphs](img/complete_graphs.PNG)
+
 ## Trees
 Trees have the following mathematical properties, in addition to the definition provided above, where G is a graph with V vertices. G is a tree if:
 - G has V-1 edges and no cycles
