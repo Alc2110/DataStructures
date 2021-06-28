@@ -688,3 +688,10 @@ Each edge has a specified direction. Applications include:
 - web (machine connections)
 - scheduling constraints
 - finance - transactions
+
+## Edge-weighted graph
+An **edge-weighted graph** has a **weight** (**cost**) associated with each edge. Applications include:
+- airlines - flight routes have different distances and fares
+- electrical and communications circuits - different wires or paths have different resistances, times for signal transmission, and other properties.
+
+
